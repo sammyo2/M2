@@ -3,7 +3,7 @@ package edu.gatech.oad.antlab.person;
 /**
  *  A simple class for person 2
  *  returns their name and a
- *  modified string 
+ *  modified string
  *
  * @author Bob
  * @version 1.1
@@ -31,14 +31,21 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 	  //Person 2 put your implementation here
-	  return null;
+        String returnString = "";
+        int stopInt = input.length();
+        for (int i = 0; i < stopInt; i++) {
+            int rand = (int)Math.random()*input.length();
+            returnString += "" + input.charAt(rand);
+            input = input.substring(0, rand) + input.substring(rand + 1, input.length());
+        }
+	  return returnString;
 	}
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
 	 *
 	 * @param input the varying string
-	 * @return the string representing the 
+	 * @return the string representing the
 	 *         object
 	 */
 	public String toString(String input) {
