@@ -1,1 +1,2 @@
-more useless info to delete
+Andre Davis
+adavis334@gatech.edu
