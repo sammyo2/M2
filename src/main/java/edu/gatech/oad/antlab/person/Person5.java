@@ -31,7 +31,20 @@ public class Person5 {
 	 */
 	private String calc(String input) {
 	  //Person 5 put your implementation here
-	  return null;
+	  if (input == null || input == "") {
+	  	return input;
+	  } else {
+	  	char[] result = input.toCharArray();
+	  	for (int i = 0; i < 2; i++) {
+	  		char temp = result[0];
+	  		for(int j = 0; j < result.length - 1; j++) {
+	  			result[j] = result[j + 1]
+			}
+			result[result.length - 1] = temp;
+		}
+		String r = copyValueOf(result);
+	  	return r;
+	  }
 	}
 	
 	/**
