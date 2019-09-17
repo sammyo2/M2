@@ -31,7 +31,7 @@ public class Person5 {
 	 */
 	private String calc(String input) {
 	  //Person 5 put your implementation here
-	  if (input == null || input == "") {
+	  if (input == null || input.length() < 3) {
 	  	return input;
 	  } else {
 	  	char[] result = input.toCharArray();
