@@ -1,0 +1,3 @@
+M3
+start with welcome screen
+all fields must be filled in configuration screen for it to run correctly
