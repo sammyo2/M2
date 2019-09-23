@@ -105,8 +105,11 @@ public class ConfigurationScreen {
 
         JButton doneButton = new JButton("Done");
         doneButton.addActionListener(e -> {
-                int sum = Integer.parseInt(pilotField.getText()) + Integer.parseInt(fighterField.getText()) +
-                        Integer.parseInt(merchantField.getText()) + Integer.parseInt(engineerField.getText());
+                int pilot = Integer.parseInt(pilotField.getText()); //added fields for ease of use.
+                int fighter = Integer.parseInt(fighterField.getText());
+                int merchant = Integer.parseInt(merchantField.getText());
+                int engineer = Integer.parseInt(engineerField.getText());
+                int sum = pilot + fighter + merchant + engineer;
                 if ((difficultyLabel.getText().equals("Easy") && sum > 20) ||
                         (difficultyLabel.getText().equals("Medium") && sum > 15) ||
                         (difficultyLabel.getText().equals("Hard") && sum > 10)) {
@@ -114,8 +117,9 @@ public class ConfigurationScreen {
                 } else {
                     doneLabel.setText("Points allocated correctly.");
                     javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            ConfirmationScreen app = new ConfirmationScreen();
+                        public void run() { //sent field to confirmation screen.
+                            ConfirmationScreen app = new ConfirmationScreen(nameField.getText(),difficultyLabel.getText(),pilot,fighter,merchant,engineer);
+                            frame.dispose();
                         }
                 }
         );}});

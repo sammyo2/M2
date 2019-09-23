@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class ConfirmationScreen {
+public class DisplayScreen {
 
-    public ConfirmationScreen(String name, String difficulty, int pilotField, int fighterField, int merchantField, int engineerField) {
-        JFrame frame = new JFrame("Confirmation Screen");
+    public DisplayScreen(String name, String difficulty, int pilotField, int fighterField,
+        int merchantField, int engineerField) {
+               JFrame frame = new JFrame("Confirmation Screen");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
-        JLabel label = new JLabel("Are these the settings you want to play with?", SwingConstants.CENTER);
-        frame.getContentPane().add(label, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel();
         GridBagConstraints gbc = new GridBagConstraints();
@@ -39,27 +38,28 @@ public class ConfirmationScreen {
         gbc.gridy++;
         centerPanel.add(engineerLabel,gbc);
 
-        JButton startButton = new JButton("Click to Confirm");
-        startButton.setPreferredSize(new Dimension(100,20));
-        startButton.addActionListener(e ->
-                javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        DisplayScreen dP = new DisplayScreen(name, difficulty, pilotField, fighterField,
-                         merchantField, engineerField);
-                        frame.dispose();
-                    }
-                }));
+        int credits;
+        if(difficulty.equals("Easy")) {
+            credits = 1000;
+        } else if(difficulty.equals("Medium")) {
+            credits = 500;
+        } else if(difficulty.equals("Hard")) {
+            credits = 100;
+        } else {
+            credits = 0;
+        }
+        JLabel creditLabel = new JLabel("Credits: " + credits);
+        gbc.gridy++;
+        centerPanel.add(creditLabel,gbc);
 
         frame.setSize(500,500);
         frame.getContentPane().add(centerPanel, BorderLayout.CENTER);
-        frame.getContentPane().add(startButton, BorderLayout.SOUTH);
         frame.setVisible(true);
     }
-
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                ConfirmationScreen app = new ConfirmationScreen("Joe","Easy",5,5,5,5);
+                DisplayScreen app = new DisplayScreen("Joe","Easy",5,5,5,5);
             }
         });
     }
