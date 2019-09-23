@@ -39,6 +39,17 @@ public class ConfirmationScreen {
         gbc.gridy++;
         centerPanel.add(engineerLabel,gbc);
 
+        JLabel creditsLabel = new JLabel();
+        gbc.gridy++;
+        centerPanel.add(creditsLabel, gbc);
+        if (difficulty.equals("Easy")) {
+            creditsLabel.setText("Credits: 2000");
+        } else if (difficulty.equals("Medium")) {
+            creditsLabel.setText("Credits: 1500");
+        } else {
+            creditsLabel.setText("Credits: 1000");
+        }
+
         JButton startButton = new JButton("Click to Confirm");
         startButton.setPreferredSize(new Dimension(100,20));
         startButton.addActionListener(e ->

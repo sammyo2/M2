@@ -119,7 +119,6 @@ public class ConfigurationScreen {
                     javax.swing.SwingUtilities.invokeLater(new Runnable() {
                         public void run() { //sent field to confirmation screen.
                             ConfirmationScreen app = new ConfirmationScreen(nameField.getText(),difficultyLabel.getText(),pilot,fighter,merchant,engineer);
-                            frame.dispose();
                         }
                 }
         );}});
