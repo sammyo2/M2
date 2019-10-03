@@ -9,28 +9,21 @@ public class Player {
     private int credits;
     private Region currentRegion;
 
-    public Player(String difficulty, String name, int pilotField, int fighterField, int merchantField, int engineerField) {
-        this.difficulty = difficulty;
+    public Player(String name, String difficulty, int pilotField, int fighterField,
+                  int merchantField, int engineerField) {
         this.name = name;
+        this.difficulty = difficulty;
         this.pilotField = pilotField;
         this.fighterField = fighterField;
         this.merchantField = merchantField;
         this.engineerField = engineerField;
         if (difficulty.equals("Easy")) {
-            credits = 2000;
+            this.credits = 2000;
         } else if (difficulty.equals("Medium")) {
-            credits = 1500;
+            this.credits = 1500;
         } else {
-            credits = 1000;
+            this.credits = 1000;
         }
-    }
-
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
     }
 
     public String getName() {
@@ -39,6 +32,14 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 
     public int getPilotField() {

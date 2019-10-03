@@ -105,40 +105,37 @@ public class ConfigurationScreen {
 
         JButton doneButton = new JButton("Done");
         doneButton.addActionListener(e -> {
-                int pilot = Integer.parseInt(pilotField.getText()); //added fields for ease of use.
-                int fighter = Integer.parseInt(fighterField.getText());
-                int merchant = Integer.parseInt(merchantField.getText());
-                int engineer = Integer.parseInt(engineerField.getText());
-                int sum = pilot + fighter + merchant + engineer;
-                if ((difficultyLabel.getText().equals("Easy") && sum > 20) ||
-                        (difficultyLabel.getText().equals("Medium") && sum > 15) ||
-                        (difficultyLabel.getText().equals("Hard") && sum > 10)) {
-                    doneLabel.setText("Too many points have been allocated. Please reduce to specified amount.");
-                } else {
-                    doneLabel.setText("Points allocated correctly.");
-                    javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                        public void run() { //sent field to confirmation screen.
-                            ConfirmationScreen app = new ConfirmationScreen(nameField.getText(),difficultyLabel.getText(),pilot,fighter,merchant,engineer);
+            int pilot = Integer.parseInt(pilotField.getText()); //added fields for ease of use.
+            int fighter = Integer.parseInt(fighterField.getText());
+            int merchant = Integer.parseInt(merchantField.getText());
+            int engineer = Integer.parseInt(engineerField.getText());
+            int sum = pilot + fighter + merchant + engineer;
+            if ((difficultyLabel.getText().equals("Easy") && sum > 20)
+                    || (difficultyLabel.getText().equals("Medium") && sum > 15)
+                    || (difficultyLabel.getText().equals("Hard") && sum > 10)) {
+                doneLabel.setText("Too many points have been allocated. "
+                        + "Please reduce to specified amount.");
+            } else {
+                doneLabel.setText("Points allocated correctly.");
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() { //sent field to confirmation screen.
+                        ConfirmationScreen app = new ConfirmationScreen(
+                                nameField.getText(), difficultyLabel.getText(),
+                                pilot, fighter, merchant, engineer);
                         }
                 }
-        );}});
+                );
+            }
+        });
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
         bottomPanel.add(doneButton);
         bottomPanel.add(doneLabel);
 
-        frame.setSize(1000,1000);
+        frame.setSize(600, 600);
         frame.getContentPane().add(centerPanel, BorderLayout.CENTER);
         frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                ConfigurationScreen app = new ConfigurationScreen();
-            }
-        });
     }
 }
